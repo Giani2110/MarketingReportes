@@ -13,3 +13,117 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Cliente {
+  cliente_id     Int      @id @default(autoincrement())
+  nombre         String   @db.VarChar(100)
+  email          String   @db.VarChar(100) @unique
+  telefono       String   @db.VarChar(30)
+  direccion      String   @db.VarChar(255)
+  fecha_registro DateTime
+
+  transacciones Transaccion[]
+
+  @@index([email])
+  @@index([telefono])
+}
+
+model Producto {
+  producto_id        Int      @id @default(autoincrement())
+  nombre             String   @db.VarChar(100)
+  descripcion        String
+  precio_base        Decimal  @db.Decimal(10, 2)
+  categoria_id       Int
+  ultima_actualizacion DateTime
+
+  categoria     Categoria   @relation(fields: [categoria_id], references: [categoria_id])
+  transacciones Transaccion[]
+  stocks        Stock[]
+
+  @@index([nombre])
+  @@index([categoria_id])
+}
+
+model Categoria {
+  categoria_id Int       @id @default(autoincrement())
+  nombre       String    @db.VarChar(100)
+  descripcion  String
+
+  productos Producto[]
+}
+
+model Sucursal {
+  sucursal_id        Int       @id @default(autoincrement())
+  nombre             String    @db.VarChar(100)
+  direccion          String    @db.VarChar(255)
+  telefono           String    @db.VarChar(30)
+  ultima_actualizacion DateTime
+
+  transacciones Transaccion[]
+  stocks        Stock[]
+  fuenteDatos   FuenteDatos[]
+}
+
+model Transaccion {
+  transaccion_id Int       @id @default(autoincrement())
+  cliente_id     Int
+  producto_id    Int
+  sucursal_id    Int
+  fuente_datos_id Int
+  metodo_pago_id Int
+  fecha_          DateTime
+  total          Decimal   @db.Decimal(10, 2)
+
+  cliente     Cliente     @relation(fields: [cliente_id], references: [cliente_id])
+  producto    Producto    @relation(fields: [producto_id], references: [producto_id])
+  sucursal    Sucursal    @relation(fields: [sucursal_id], references: [sucursal_id])
+  fuenteDatos FuenteDatos @relation(fields: [fuente_datos_id], references: [fuente_datos_id])
+  metodoPago  MetodoPago  @relation(fields: [metodo_pago_id], references: [metodo_pago_id])
+  reporte     ReporteGenerado?
+
+  @@index([cliente_id])
+  @@index([producto_id])
+  @@index([sucursal_id])
+  @@index([fecha_])
+}
+
+model Stock {
+  stock_id            Int       @id @default(autoincrement())
+  producto_id         Int
+  sucursal_id         Int
+  cantidad            Decimal   @db.Decimal(10, 2)
+  ultima_actualizacion DateTime
+
+  producto Producto @relation(fields: [producto_id], references: [producto_id])
+  sucursal Sucursal @relation(fields: [sucursal_id], references: [sucursal_id])
+
+  @@index([producto_id])
+  @@index([sucursal_id])
+  @@unique([producto_id, sucursal_id]) // Asegura que no haya duplicados de producto en la misma sucursal
+}
+
+model FuenteDatos {
+  fuente_datos_id Int       @id @default(autoincrement())
+  tipo            String    @db.VarChar(50)
+  descripcion     String
+  sucursal_id     Int?
+  sucursal        Sucursal? @relation(fields: [sucursal_id], references: [sucursal_id], onDelete: SetNull, onUpdate: Cascade)
+
+  transacciones Transaccion[]
+}
+
+model MetodoPago {
+  metodo_pago_id Int       @id @default(autoincrement())
+  nombre         String    @db.VarChar(50)
+  descripcion    String    @db.VarChar(255)
+
+  transacciones Transaccion[]
+}
+
+model ReporteGenerado {
+  reporte_id     Int       @id @default(autoincrement())
+  transaccion_id Int       @unique
+  fecha_generacion DateTime
+
+  transaccion Transaccion @relation(fields: [transaccion_id], references: [transaccion_id])
+}
