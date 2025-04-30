@@ -1,6 +1,6 @@
 # 📊 Backend - Sistema de Reportes Automatizados
 
-Este proyecto es la parte **backend** de un sistema que automatiza la recolección, almacenamiento y reporte de datos de clientes, productos, sucursales y transacciones para una empresa de marketing digital.
+Este sistema automatiza la recolección, limpieza, almacenamiento y generación de reportes de datos para una empresa de marketing digital. Reúne información desde múltiples fuentes (como APIs, archivos y bases de datos), la centraliza y permite obtener reportes organizados en Excel. También gestiona datos de clientes, productos, transacciones, sucursales y stock, integrando todo desde una interfaz web. 
 
 ---
 
@@ -47,11 +47,18 @@ Este proyecto es la parte **backend** de un sistema que automatiza la recolecci�
    npm run dev
    ```
 5. **Otros comandos**
-| Comando                  | Descripción                                      |
-|--------------------------|--------------------------------------------------|
-| `npm run prisma:generate`| Genera el cliente Prisma                         |
-| `npm run prisma:migrate` | Aplica migraciones a la base de datos            |
-| `npx prisma studio`      | Abre una interfaz visual para la base de datos   |
+   Genera el cliente Prisma
+```bash
+   npm run prisma:generate
+   ```
+Aplica migraciones a la base de datos          
+```bash
+   npm run prisma:migrate
+   ```
+Abre una interfaz visual para la base de datos 
+```bash
+   npx prisma studio
+   ```
 
 ---
 
