@@ -62,17 +62,17 @@ Abre una interfaz visual para la base de datos
 
 ---
 
-##🧾 Documentación del proyecto##
+##🧾 Documentación del proyecto
 - https://docs.google.com/document/d/159es5-xB-u7AKz3d6HiMRBeNq_KlpkgeIeafQjdbRR4/edit?tab=t.0
 
 ---
 
-##🛠️ Notas##
+##🛠️ Notas
 -Usamos arquitectura en capas (controller → service → Prisma).
 -Prisma se encarga de la conexión y consultas a la base de datos.
 -Swagger facilita probar los endpoints desde el navegador.
 
 ---
 
-##🧑‍💻 Autor##
+##🧑‍💻 Autor
 - Gianfranco Andreachi
