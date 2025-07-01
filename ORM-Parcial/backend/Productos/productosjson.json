@@ -1,0 +1,8 @@
+[
+    {
+      "nombre": "Producto JSON",
+      "descripcion": "prueba",
+      "precio_base": 1530,
+      "categoria_id": 1
+    }
+]

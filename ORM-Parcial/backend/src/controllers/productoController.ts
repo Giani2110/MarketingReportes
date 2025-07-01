@@ -1,58 +1,25 @@
-// src/controllers/productoController.ts
-import { Request, Response } from "express";
-import { ProductoService } from "../service/productoService";
-import { Producto } from "@prisma/client";
+import { Request, Response } from 'express';
+import { ImportarProductosService } from '../domain/ImportProductoService';
 
-/**
- * @swagger
- * tags:
- *   name: Productos
- *   description: Gestión de productos
- */
+const service = new ImportarProductosService();
 
-/**
- * @swagger
- * /api/productos:
- *   get:
- *     summary: Obtener todos los productos
- *     tags: [Productos]
- *     responses:
- *       200:
- *         description: Lista de productos
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                   nombre:
- *                     type: string
- *                   descripcion:
- *                     type: string
- *                   precio:
- *                     type: number
- *                   stock:
- *                     type: integer
- *                 example:
- *                   id: 1
- *                   nombre: "Ketchup"
- *                   descripcion: "Aderezo"
- *                   precio: 120.5
- *                   stock: 30
- */
 export class ProductoController {
-  private productoService: ProductoService;
-
-  constructor() {
-    this.productoService = ProductoService.getInstance();
+  async importarProductos(req: Request, res: Response) {
+    importarProductos(req, res);
   }
-
-  async getProductos(req: Request, res: Response): Promise<Response<Producto[]>> {
-    const productos = await this.productoService.getProductos();
-    return res.status(200).json(productos);
-  }
-  
 }
+
+const importarProductos = async (req: Request, res: Response) => {
+  const { tipo, filePath } = req.body;
+
+  if (!['csv', 'json'].includes(tipo)) {
+    return res.status(400).json({ error: 'Tipo de archivo inválido' });
+  }
+
+  try {
+    const cantidad = await service.ejecutar(tipo as 'csv' | 'json', filePath);
+    res.json({ mensaje: `Se importaron ${cantidad} productos` });
+  } catch (err) {
+    res.status(500).json({ error: 'Error al importar', detalles: (err as Error).message });
+  }
+};
