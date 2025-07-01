@@ -3,6 +3,7 @@ import { ProductoDTO } from '../domain/ProductoDTO';
 import ExcelJS from 'exceljs';
 import fs from 'fs';
 import path from 'path';
+import { enviarReportePorEmail } from '../utils/emailService';
 
 eventBus.on('productosImportados', async (productos: ProductoDTO[]) => {
   const workbook = new ExcelJS.Workbook();
@@ -17,13 +18,21 @@ eventBus.on('productosImportados', async (productos: ProductoDTO[]) => {
 
   worksheet.addRows(productos);
 
+  // Crear carpeta "Reportes" si no existe
   const reportDir = path.join(__dirname, '../../Reportes');
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir);
   }
 
-  const pathReporte = path.join(reportDir, 'reporte_productos.xlsx');
-  await workbook.xlsx.writeFile(pathReporte);
+  // Generar nombre dinámico con fecha/hora
+  const timestamp = new Date().toISOString().replace(/[:]/g, '-').split('.')[0];
+  const fileName = `reporte_productos_${timestamp}.xlsx`;
+  const fullPath = path.join(reportDir, fileName);
 
-  console.log(`📁 Reporte generado en: ${pathReporte}`);
+  // Guardar el archivo Excel
+  await workbook.xlsx.writeFile(fullPath);
+  console.log(`📁 Reporte generado en: ${fullPath}`);
+
+  // Enviar por email
+  await enviarReportePorEmail(fullPath);
 });

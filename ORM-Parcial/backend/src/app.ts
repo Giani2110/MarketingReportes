@@ -6,7 +6,6 @@ import categoriaRoutes from "./routes/categoriaRoutes"; // Importar rutas de cat
 import { swaggerUi, swaggerSpec } from "./swagger";
 import './events/productosReportHandler';
 
-
 const app = express();
 
 app.use(express.json());
