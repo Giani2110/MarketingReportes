@@ -4,6 +4,8 @@ import productoRoutes from "./routes/productoRoutes";
 import clienteRoutes from "./routes/clienteRoutes"; // Importar rutas de clientes
 import categoriaRoutes from "./routes/categoriaRoutes"; // Importar rutas de categorías
 import { swaggerUi, swaggerSpec } from "./swagger";
+import './events/productosReportHandler';
+
 
 const app = express();
 
