@@ -21,6 +21,7 @@
     "exceljs": "^4.4.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
+    "multer": "^2.0.1",
     "nodemailer": "^7.0.4",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
+    "@types/multer": "^2.0.0",
     "@types/node": "^22.15.3",
     "@types/nodemailer": "^6.4.17",
     "@types/swagger-jsdoc": "^6.0.4",

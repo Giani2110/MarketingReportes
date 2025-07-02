@@ -15,7 +15,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
 export const enviarReportePorEmail = async (reportePath: string) => {
   const archivoNombre = path.basename(reportePath);
 
