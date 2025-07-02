@@ -1,4 +1,3 @@
-// src/app.ts
 import express from "express";
 import productoRoutes from "./routes/productoRoutes";
 import clienteRoutes from "./routes/clienteRoutes";
