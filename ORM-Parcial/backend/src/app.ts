@@ -1,13 +1,14 @@
 // src/app.ts
 import express from "express";
 import productoRoutes from "./routes/productoRoutes";
-import clienteRoutes from "./routes/clienteRoutes"; // Importar rutas de clientes
-import categoriaRoutes from "./routes/categoriaRoutes"; // Importar rutas de categorías
+import clienteRoutes from "./routes/clienteRoutes";
+import categoriaRoutes from "./routes/categoriaRoutes";
 import { swaggerUi, swaggerSpec } from "./swagger";
 import './events/productosReportHandler';
-import uploadRoutes from "./routes/uploadRoutes"; // Importar rutas de carga de archivos
+import uploadRoutes from "./routes/uploadRoutes"; 
 import cors from 'cors';
-
+import './events/scheduler/productosScheduler';
+import reporteRoutes from './routes/reporteRoutes';
 
 
 const app = express();
@@ -28,7 +29,7 @@ app.use("/api", productoRoutes);
 app.use("/api", clienteRoutes);
 app.use("/api", categoriaRoutes);
 app.use('/api', uploadRoutes); 
-
+app.use('/api', reporteRoutes);
 
 
 app.listen(3000, () => {
