@@ -11,6 +11,7 @@ Este sistema automatiza la recolección, limpieza, almacenamiento y generación 
 - **Prisma ORM**
 - **PostgreSQL**
 - **Swagger** para documentación de la API
+- **ReactJS** para la carga de archivos desde la web
 
 ---
 
@@ -59,7 +60,19 @@ Abre una interfaz visual para la base de datos
 ```bash
    npx prisma studio
    ```
+---
+### Los comandos serán usados dentro de la carpeta ./frontend
+---
 
+6. **Instalá las dependencias**
+```bash
+   npm install
+   ```
+7. **Correr la web**
+```bash
+   npm run dev
+   ```
+   Al correr la web se cargarán automaticamente a la base de datos 10 categorias de productos
 ---
 
 ## 🧾 Documentación del proyecto
@@ -70,7 +83,6 @@ Abre una interfaz visual para la base de datos
 ## 🛠️ Notas
 -Usamos arquitectura en capas (controller → service → Prisma).
 -Prisma se encarga de la conexión y consultas a la base de datos.
--Swagger facilita probar los endpoints desde el navegador.
 
 ---
 
