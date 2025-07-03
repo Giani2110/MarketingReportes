@@ -1,6 +1,6 @@
 # 📊 Backend - Sistema de Reportes Automatizados
 
-Este sistema automatiza la recolección, limpieza, almacenamiento y generación de reportes de datos para una empresa de marketing digital. Reúne información desde múltiples fuentes (como APIs, archivos y bases de datos), la centraliza y permite obtener reportes organizados en Excel. También gestiona datos de clientes, productos, transacciones, sucursales y stock, integrando todo desde una interfaz web. 
+Este sistema permite la carga de productos a la base de datos mediante archivos .CSV o .JSON, se cargan desde la web, al momento de ser cargados le llegará un mail al equipo de marketing con todos los detalles de los nuevos productos, cada 24 horas a las 8.AM se genera un reporte automático con todos los productos cargados en el último día, también este reporte se envia al mail.
 
 ---
 
