@@ -1,8 +1,62 @@
 [
-    {
-      "nombre": "Producto JSON",
-      "descripcion": "prueba",
-      "precio_base": 1530,
-      "categoria_id": 1
-    }
+  {
+    "nombre": "Colonia Night Sky",
+    "descripcion": "Toques amaderados y especiados",
+    "precio_base": 1750,
+    "categoria_id": 1
+  },
+  {
+    "nombre": "Desodorante Arctic Ice",
+    "descripcion": "Sensación helada para todo el día",
+    "precio_base": 670,
+    "categoria_id": 2
+  },
+  {
+    "nombre": "Snack Salado Mix",
+    "descripcion": "Mezcla de frutos secos y semillas",
+    "precio_base": 410,
+    "categoria_id": 3
+  },
+  {
+    "nombre": "Gaseosa Cola Max",
+    "descripcion": "Sabor clásico con menos azúcar",
+    "precio_base": 380,
+    "categoria_id": 4
+  },
+  {
+    "nombre": "Campera Liviana",
+    "descripcion": "Resistente al viento y agua",
+    "precio_base": 3200,
+    "categoria_id": 5
+  },
+  {
+    "nombre": "Botas Trekking",
+    "descripcion": "Ideal para caminatas largas",
+    "precio_base": 6400,
+    "categoria_id": 6
+  },
+  {
+    "nombre": "Pulsera Minimal",
+    "descripcion": "Diseño elegante de acero quirúrgico",
+    "precio_base": 2100,
+    "categoria_id": 7
+  },
+  {
+    "nombre": "Lámpara LED Decorativa",
+    "descripcion": "Luz cálida para ambientes acogedores",
+    "precio_base": 1950,
+    "categoria_id": 8
+  },
+  {
+    "nombre": "Power Bank 10000mAh",
+    "descripcion": "Carga rápida con doble salida USB",
+    "precio_base": 2850,
+    "categoria_id": 9
+  },
+  {
+    "nombre": "Mesa Ratona",
+    "descripcion": "Diseño moderno en madera natural",
+    "precio_base": 5200,
+    "categoria_id": 10
+  }
 ]
